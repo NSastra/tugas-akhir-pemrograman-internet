@@ -3,12 +3,21 @@
 @section('title', 'Ajukan Pinjaman')
 
 @section('content')
-  <form action="/pinjaman/store" method="post">
+  <form action="/pinjaman" method="post">
 @csrf
+  
+<div class="form-group">
+  <label for="exampleInputEmail1">Kategori ID</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" name="kategori_id" aria-describedby="emailHelp" value="{{ old('kategori_id') }}">
+</div>
+@error('kategori_id')
+  <div class="alert alert-danger"> {{ $message }}
+  </div>
+@enderror
 
   <div class="form-group">
-    <label for="exampleInputEmail1">Nama Lengkap</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="nama" aria-describedby="emailHelp" placeholder="Masukkan Nama Anda" value="{{ old('nama') }}">
+    <label for="exampleInputEmail1">Nama Peminjam</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="nama" aria-describedby="emailHelp" value="{{ old('nama') }}">
   </div>
   @error('nama')
     <div class="alert alert-danger"> {{ $message }}
@@ -16,8 +25,8 @@
   @enderror
 
   <div class="form-group">
-    <label for="exampleInputPassword1">NIM</label>
-    <input type="text" class="form-control" name="nik" id="exampleInputPassword1" placeholder="Masukkan NIK" value="{{ old('nik') }}">
+    <label for="exampleInputPassword1">NIK Peminjam</label>
+    <input type="text" class="form-control" name="nik" id="exampleInputPassword1" value="{{ old('nik') }}">
   </div>
   @error('nik')
     <div class="alert alert-danger"> {{ $message }}
@@ -25,8 +34,8 @@
   @enderror
 
   <div class="form-group">
-    <label for="exampleInputPassword1">Jumlah Pengajuan</label>
-    <input type="text" class="form-control" name="jumlah" id="exampleInputPassword1" placeholder="Masukkan Jumlah Pinjaman" value="{{ old('jumlah') }}">
+    <label for="exampleInputPassword1">Nilai Pinjaman</label>
+    <input type="text" class="form-control" name="jumlah" id="exampleInputPassword1" value="{{ old('jumlah') }}">
   </div>
   @error('jumlah')
     <div class="alert alert-danger"> {{ $message }}
@@ -35,9 +44,18 @@
 
   <div class="form-group">
     <label for="exampleInputPassword1">Jaminan</label>
-    <input type="text" class="form-control" name="jaminan" id="exampleInputPassword1" placeholder="Tuliskan Jaminan Anda" value="{{ old('jaminan') }}">
+    <input type="text" class="form-control" name="jaminan" id="exampleInputPassword1" value="{{ old('jaminan') }}">
   </div>
   @error('jaminan')
+    <div class="alert alert-danger"> {{ $message }}
+    </div>
+  @enderror
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Status</label>
+    <input type="text" class="form-control" name="status" id="exampleInputPassword1" value="{{ old('status') }}">
+  </div>
+  @error('status')
     <div class="alert alert-danger"> {{ $message }}
     </div>
   @enderror

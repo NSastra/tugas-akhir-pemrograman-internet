@@ -15,7 +15,8 @@ class PinjamanController extends Controller
      */
     public function index()
     {
-        return view('pinjaman.tambah');
+        $Pinjamen = Pinjamen::orderBy('id')->get();
+        return view('pinjaman.index', compact('Pinjamen'));
     }
 
     public function daftarpjm(){
@@ -30,7 +31,7 @@ class PinjamanController extends Controller
      */
     public function create()
     {
-        //
+        return view('pinjaman.tambah');
     }
 
     /**
@@ -46,6 +47,7 @@ class PinjamanController extends Controller
             'nik' => 'required',
             'jumlah' => 'required',
             'jaminan' => 'required',
+            'status' => 'required'
 
         ]);
         
@@ -54,11 +56,13 @@ class PinjamanController extends Controller
         $pinjamen->nik = $request->nik;
         $pinjamen->jumlah = $request->jumlah;
         $pinjamen->jaminan = $request->jaminan;
+        $pinjamen->status = $request->status;
+        $pinjamen->kategori_id = 0;
         
 
         $pinjamen->save();
 
-        return redirect('/');
+        return redirect('/pinjaman');
     }
 
     /**
@@ -80,7 +84,8 @@ class PinjamanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Pinjamen = Pinjamen::where('id', $id)->first();
+        return view('pinjaman.edit', ['Pinjamen' => $Pinjamen]);
     }
 
     /**
@@ -92,7 +97,25 @@ class PinjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'kategori_id' => 'required',
+            'nik' => 'required',
+            'jumlah' => 'required',
+            'jaminan' => 'required',
+            'status' => 'required'
+        ]);
+
+        Pinjamen::find($id)->update([
+            'nama' => $request->nama,
+            'kategori_id' => $request->kategori_id,
+            'nik' => $request->nik,
+            'jumlah' => $request->jumlah,
+            'jaminan' => $request->jaminan,
+            'status' => $request->status
+        ]);
+
+        return redirect('/pinjaman');
     }
 
     /**
@@ -103,7 +126,7 @@ class PinjamanController extends Controller
      */
     public function destroy($id)
     {
-        Daftarpjm::find($id)->delete();
-        return redirect('/');
+        Pinjamen::find($id)->delete();
+        return redirect('/pinjaman');
     }
 }

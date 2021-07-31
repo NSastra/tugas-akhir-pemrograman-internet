@@ -16,7 +16,7 @@
 
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Pinjaman Kredit Online</a>
+  <a class="navbar-brand" href="/">Rekapitulasi Data Pinjaman Kredit Online</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,26 +26,14 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/pinjaman/tambah">Ajukan Pinjaman</a>
-      </li>
-      {{-- <li class="nav-item">
-        <a class="nav-link" href="/tokobuku/daftar">Daftar</a>
+        <a class="nav-link" href="/pinjaman">Lihat Data Pinjaman</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/tokobuku/masuk">Login</a>
-      </li> --}}
+        <a class="nav-link" href="/pinjaman/create">Tambah Data</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/kategori">Lihat Kategori Pinjaman</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/pinjaman/daftar">Lihat Pilihan Pinjaman</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/kategori/riwayat">Lihat Riwayat Pinjaman</a>
-      </li>
-      {{-- <li class="nav-item">
-        <a class="nav-link" href="/transaksi/chart">Keranjang Belanja</a>
-      </li> --}}
       
     </ul>
   </div>

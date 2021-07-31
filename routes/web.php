@@ -19,10 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/pinjaman/tambah', [PinjamanController::class, 'index']);
-Route::post('pinjaman/store', [PinjamanController::class, 'store']);
-Route::get('/pinjaman/daftar', [PinjamanController::class, 'daftarpjm']);
-Route::delete('/pinjaman/{id}', [PinjamanController::class, 'destroy']);
+Route::resources([
+    '/pinjaman' => PinjamanController::class,
+    '/kategori' => KategoriController::class,
+]);
 
-Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/kategori/tambahdata/{kategori}', [KategoriController::class, 'tambahdata']);
+Route::put('/kategori/tambahdata/{kategori}', [KategoriController::class, 'updatedata']);
+Route::put('/kategori/hapus/{kategori}', [KategoriController::class, 'hapusdata']);
+
 
